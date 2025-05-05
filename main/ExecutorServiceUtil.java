@@ -3,6 +3,7 @@ package main;
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public abstract class ExecutorServiceUtil {
     //https://www.youtube.com/playlist?list=PLhfHPmPYPPRl0LntrCBnQD5ln6lnqqoms
@@ -16,7 +17,14 @@ public abstract class ExecutorServiceUtil {
         // when thread pool size is equivalent to number of tasks then it is a sync process
         // but when number of tasks are greater than thread pool size then it is async i.e
         // based on the availability of the threads
+        System.out.println("To be Last!!");
         printThreadName();
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(5, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     protected static void printThreadName() {

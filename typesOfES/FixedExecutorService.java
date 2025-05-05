@@ -8,8 +8,8 @@ import java.util.concurrent.Executors;
 public class FixedExecutorService extends ExecutorServiceUtil {
     @Override
     public void execute() {
-        //threadCreationWithFixedThreadPool();
-        threadCreationWithFixedAvailableProcessesThreadPool();
+        threadCreationWithFixedThreadPool();
+        //threadCreationWithFixedAvailableProcessesThreadPool();
     }
 
     /**
